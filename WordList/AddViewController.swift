@@ -25,6 +25,19 @@ class AddViewController: UIViewController {
     
     }
     @IBAction func saveWord() {
+        if englishTextField.text == "" || japaneseTextField.text == ""{
+            let missalert = UIAlertController(
+                title: "error",
+                message: "単語の入力をして下さい",
+                preferredStyle: .alert
+            )
+            missalert.addAction(UIAlertAction(
+                title: "OK",
+                style: .default,
+                handler: nil
+            ))
+            present(missalert, animated: true, completion: nil)
+        }else{
         let wordDictionary = ["english": englishTextField.text!, "japanese": japaneseTextField.text!]
         wordArray.append(wordDictionary)
         saveData.set(wordArray, forKey: "WORD")
@@ -43,6 +56,7 @@ class AddViewController: UIViewController {
         present(alert, animated: true, completion: nil)
         englishTextField.text = ""
         japaneseTextField.text = ""
+        }
     }
     
         
